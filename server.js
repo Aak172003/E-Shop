@@ -24,9 +24,16 @@ import productRoute from './routes/productRoute.js'
 import cors from 'cors';
 
 import path from 'path';
-
+import {fileURLToPath} from 'url';
 // configure Env
 dotenv.config();
+
+// Call Db Function
+connectDb();
+
+// esmodule fix
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Instance Object
 const app = express();
@@ -71,8 +78,6 @@ app.listen(PORT, () => {
     console.log(`Server running at ${Mode} on http://localhost:${PORT}`.bgCyan.white);
 });
 
-// Call Db Function
-connectDb();
 
 
 
